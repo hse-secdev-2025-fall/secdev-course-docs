@@ -1,0 +1,8 @@
+# Gitleaks config - пример (минимально)
+title = "gitleaks config"
+
+[allowlist]
+description = "Allowed patterns"
+regexes = [
+  '''(?i)example(api|token|secret)'''
+]

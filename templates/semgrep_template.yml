@@ -1,0 +1,12 @@
+# Semgrep config - минимальный стартовый набор (пример)
+# Docs: https://semgrep.dev/docs/
+rules:
+  - id: py.dangerous-eval
+    patterns:
+      - pattern: eval(...)
+    message: "Avoid eval; it's dangerous."
+    severity: ERROR
+    languages: [python]
+  # Подключите официальные правила:
+#  - include: p/ci
+#  - include: p/security-audit
