@@ -1,0 +1,4 @@
+# Пример для вставки в .github/CODEOWNERS
+*                 @instructors
+app/auth/*        @instructors
+app/api/*         @instructors

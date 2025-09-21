@@ -1,66 +1,57 @@
-# P01: что сделать (коротко)
+# P01 — Repo Hygiene & Bootstrap (инструкция для студента)
 
-1) Создай ветку `p01-setup` от `main`.
-2) Добавь/обнови: `README`, `SECURITY.md`, `.pre-commit-config.yaml`, CI workflow.
-3) Запусти локально: `ruff/black/isort`, `pytest -q`, `pre-commit run --all-files`.
-4) Открой PR по шаблону, запроси ревью у `@instructors`.
-5) Добейся **зелёного CI**, закрой blocking, merge и поставь тег `P01`.
+## Что нужно сдать
+PR из ветки `p01-setup` в `main` + зелёный CI + тег `P01`.
 
+## Шаги
 
-## Импорт из student-steps.md
-
-# P01 — Подробные шаги для студента
-
-## 1) Примите assignment и клонируйте
+1) **Клонирование и ветка**
 ```bash
-git clone https://github.com/hse-secdev-2025-fall/<your-repo>.git
-cd <your-repo>
+git clone <URL вашего репозитория>
+cd <repo>
+git switch -c p01-setup
 ```
 
-## 2) Настройте окружение
-```bash
-python -m venv .venv
-# Linux/macOS:
-source .venv/bin/activate
-# Windows PowerShell:
-# .venv\Scripts\Activate.ps1
+2) **Минимальная гигиена в репозитории**
+- Обнови `README.md`: как запускать приложение и тесты.
+- Добавь/обнови `SECURITY.md`: как сообщать об уязвимостях, контакты.
+- Убедись, что есть `.gitattributes` для нормализации перевода строк.
+- Проверь наличие `.pre-commit-config.yaml`.
 
-pip install -r requirements.txt
+3) **Установка инструментов и локальные проверки**
+```bash
+python -m pip install --upgrade pip
+pip install -r requirements.txt -r requirements-dev.txt || true
+pip install ruff black isort pytest pre-commit
 pre-commit install
+pre-commit run --all-files
+ruff check --fix .
+black .
+isort .
 pytest -q
 ```
 
-## 3) Ветка и изменения
-```bash
-git checkout -b p01-setup
-```
-- Обновите `README.md` (цели, запуск, тесты)
-- Укажите контакт в `SECURITY.md`
-- Проверьте `pre-commit run --all-files`
-
-## 4) Коммит и PR
+4) **CI**
+- Проверь, что `.github/workflows/ci.yml` присутствует (см. `05_ci_snippets.md`).
+- Если локально всё зелёное — запушь ветку:
 ```bash
 git add -A
-git commit -m "chore(p01): repo hygiene, README/SECURITY"
+git commit -m "P01: bootstrap repo hygiene (CI, pre-commit, README, SECURITY)"
 git push -u origin p01-setup
 ```
-Откройте PR «P01 — repo hygiene», заполните шаблон.
 
-## 5) CI → зелёный
-- Исправьте форматирование: `ruff check --fix . && black . && isort .`
-- Прогоните `pytest -q`, повторите коммит.
+5) **PR и ревью**
+- Открой PR `p01-setup → main` по шаблону, запроси ревью у преподавателей.
+- Исправь замечания, добейся **зелёного CI**.
 
-## 6) Ревью и merge
-- Запросите ревью у `@hse-secdev-2025-fall/instructors`
-- Закройте blocking-замечания → merge в `main`
-
-## 7) Тег
+6) **Merge и тег**
+После merge в `main` поставь тег:
 ```bash
 git tag P01
 git push --tags
 ```
 
 ### Траблшутинг
-- `src refspec main` → сделайте коммит в ветке `p01-setup` и откройте PR (в `main` пуш запрещён).
-- CRLF/переводы строк → `.gitattributes` + `git add --renormalize .`
-- Секреты в репо → удалить, инвалидировать, сообщить преподавателю.
+- Ошибка с веткой `main`: сделай хотя бы один коммит в `p01-setup` и открой PR (прямые пуши в `main` запрещены).
+- Проблемы с переводами строк: добавь `.gitattributes` и выполни `git add --renormalize .`.
+- Закоммиченные секреты: немедленно удали из кода/истории, инвалидируй в провайдере и сообщи преподавателю.

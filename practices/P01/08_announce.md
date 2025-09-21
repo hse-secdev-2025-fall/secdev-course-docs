@@ -5,6 +5,5 @@
 **Дедлайн:** _TBD_
 
 Ссылки:
-- Рубрика: `evaluation/70_rubrics-master.xlsx#P01`
-- Чек-лист: `evaluation/71_checklists-master.xlsx#P01`
-- Минимальный CI: `project/68_ci-cd-minimum.md`
+- Чек-лист: `practices/P01/02_checklist.md`
+- Минимальный CI: `practices/P01/05_ci_snippets.md`
