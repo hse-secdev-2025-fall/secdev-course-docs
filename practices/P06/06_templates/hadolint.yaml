@@ -1,0 +1,4 @@
+ignored:
+  - DL3008  # Pin versions in apt-get install (пример, отредактируйте под себя)
+no-color: true
+failure-threshold: warning

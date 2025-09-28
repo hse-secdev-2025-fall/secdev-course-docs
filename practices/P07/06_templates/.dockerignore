@@ -1,0 +1,13 @@
+.git
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.pytest_cache/
+dist/
+build/
+.env
+.idea
+.vscode
+coverage.xml
+reports/
