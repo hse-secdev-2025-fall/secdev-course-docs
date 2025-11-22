@@ -1,0 +1,11 @@
+# Пример минимального конфига Trivy для курса.
+
+scan:
+  scanners:
+    - vuln
+    - config
+  severity:
+    - CRITICAL
+    - HIGH
+
+format: "json"

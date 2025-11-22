@@ -1,7 +1,7 @@
 # Сниппеты — P05 (Secure Coding & ADR)
 
 ## 1) ADR — каркас
-````md
+```md
 # ADR-001: <краткое название>
 Дата: 2025-09-22
 Статус: Accepted
@@ -19,7 +19,7 @@
 - NFR-03 (ошибки RFC7807), NFR-05 (ротация секретов)
 - F1, R2 из Threat Model
 - tests/test_errors.py::test_rfc7807_contract
-````
+```
 
 ## 2) RFC 7807 — пример обработчика (Starlette/FastAPI-совместимый)
 ```python
